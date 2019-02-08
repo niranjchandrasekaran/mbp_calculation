@@ -47,7 +47,7 @@ if __name__ == '__main__':
     base_comp = {'a': 't', 't': 'a', 'g': 'c', 'c': 'g'}
 
     fout_all = open('mbp_out', 'w')
-    fout_all.write('Fasta 1\t Fasta 2\t<MBP> fwd-fwd\t<MBP> fwd-rev\n')
+    fout_all.write('Fasta 1,Fasta 2,<MBP> fwd-fwd,<MBP> fwd-rev\n')
 
     for i in range(len(file_list)):
         fasta_i_name = file_list[i]
@@ -95,9 +95,9 @@ if __name__ == '__main__':
                 fout_name = fasta_i_name.split('.')[0] + '-' + fasta_j_name.split('.')[0]
                 fout = open(fout_name, 'w')
 
-                fout.write('Seq 1\tSeq 2\tMBP fwd-fwd\tMBP fwd-rev\n')
+                fout.write('Seq 1,Seq 2,MBP fwd-fwd,MBP fwd-rev\n')
                 for _ in range(len(name)):
-                    fout.write('%s\t%s\t%f\t%f\n' % (name[_][0], name[_][1], fwd[_], rev[_]))
+                    fout.write('%s,%s,%f,%f\n' % (name[_][0], name[_][1], fwd[_], rev[_]))
 
                 fout.close()
 
@@ -105,6 +105,6 @@ if __name__ == '__main__':
             mean_rev = sum(rev) / len(rev)
 
             fout_all.write(
-                '%s\t%s\t%f\t%f\n' % (fasta_i_name.split('.')[0], fasta_j_name.split('.')[0], mean_fwd, mean_rev))
+                '%s,%s,%f,%f\n' % (fasta_i_name.split('.')[0], fasta_j_name.split('.')[0], mean_fwd, mean_rev))
 
     fout_all.close()
