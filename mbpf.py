@@ -7,7 +7,7 @@ parser = argparse.ArgumentParser(description='Computes fwd-fwd and fwd-rev MBP s
 parser.add_argument('-f', metavar='', help='List of FASTA files')
 parser.add_argument('-mb', action='store_true',
                     help='Use this flag if the sequences are composed of only codon middle bases')
-parser.add_argument('-verbose', action='store_true',
+parser.add_argument('-sequence', action='store_true',
                     help='Use this flag if individual sequence level MBP scores should be outputted')
 
 args = parser.parse_args()
