@@ -51,3 +51,9 @@ if __name__ == '__main__':
 
         nuc_align_fasta.append("".join(temp))
 
+    fout = open(args.o, 'w')
+
+    for _ in range(len(nuc_align_fasta)):
+        fout.write('%s\n' % nuc_align_fasta[_])
+
+    fout.close()
