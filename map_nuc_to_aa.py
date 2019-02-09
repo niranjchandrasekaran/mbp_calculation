@@ -35,3 +35,19 @@ if __name__ == '__main__':
 
     nuc_dict = build_dict(nuc_fasta, 3)
     aa_align_dict = build_dict(aa_align_fasta, 1)
+
+    nuc_align_fasta = []
+
+    for seq in aa_align_dict:
+        nuc_align_fasta.append(seq)
+        count_dashes = 0
+        temp = []
+        for i in range(len(aa_align_dict[seq])):
+            if aa_align_dict[seq][i] != '-':
+                temp.append(nuc_dict[seq][i-count_dashes])
+            else:
+                count_dashes += 1
+                temp.append('---')
+
+        nuc_align_fasta.append("".join(temp))
+
