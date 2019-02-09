@@ -9,6 +9,8 @@ parser.add_argument('-f', metavar='', help='Input FASTA file')
 parser.add_argument('-o', metavar='', help='Output csv file')
 parser.add_argument('-option', metavar='', default='aa',
                     help='Enter nuc for Nucleotide sequence [default aa for Protein sequence')
+parser.add_argument('-mb', action='store_true',
+                    help='Use this flag if sequences are composed of only codon middle bases')
 
 args = parser.parse_args()
 
@@ -26,25 +28,26 @@ if __name__ == '__main__':
                 else:
                     fasta.append(line.rstrip())
 
+    skip = 1
+
     if args.option == 'nuc':
-        skip = 3
-    else:
-        skip = 1
+        if not args.mb:
+            skip = 3
 
     split_fasta = []
 
     for _ in range(len(fasta)):
         split_fasta.append([])
         for i in range(0, len(fasta[_]), skip):
-            split_fasta[_].append(fasta[_][i:i+skip])
+            split_fasta[_].append(fasta[_][i:i + skip])
 
-    fout_name = open(args.f.split('.')[0]+'_name', 'w')
+    fout_name = open(args.f.split('.')[0] + '_name', 'w')
     fout_seq = open(args.o, 'w')
 
     for i in range(len(split_fasta)):
         fout_name.write('%s\n' % name[i])
         for j in range(len(split_fasta[i])):
-            if j != len(split_fasta[i])-1:
+            if j != len(split_fasta[i]) - 1:
                 fout_seq.write('%s,' % split_fasta[i][j])
             else:
                 fout_seq.write('%s\n' % split_fasta[i][j])
