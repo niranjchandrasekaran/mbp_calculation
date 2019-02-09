@@ -32,7 +32,3 @@ if __name__ == '__main__':
         fout.write('%s\n' % single_line_fasta[_])
 
     fout.close()
-
-
-
-
