@@ -4,8 +4,8 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Converts multi line FASTA file to single line FASTA file')
 
-parser.add_argument('-f', metavar='', help='Input multi line FASTA file')
-parser.add_argument('-o', metavar='', help='Output single line FASTA line')
+parser.add_argument('-f', metavar='', required=True, help='Input multi line FASTA file')
+parser.add_argument('-o', metavar='', required=True, help='Output single line FASTA line')
 
 args = parser.parse_args()
 

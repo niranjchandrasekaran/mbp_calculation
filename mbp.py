@@ -4,7 +4,7 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Computes fwd-fwd and fwd-rev MBP scores for a list of FASTA files')
 
-parser.add_argument('-f', metavar='', help='List of FASTA files')
+parser.add_argument('-f', metavar='', required=True, help='List of FASTA files')
 parser.add_argument('-mb', action='store_true',
                     help='Use this flag if the sequences are composed of only codon middle bases')
 parser.add_argument('-sequence', action='store_true',

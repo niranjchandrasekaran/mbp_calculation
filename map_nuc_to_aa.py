@@ -4,9 +4,9 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Maps the nucleotide sequence to aligned amino acid sequence')
 
-parser.add_argument('-n', metavar='', help='Input Nucleotide FASTA file')
-parser.add_argument('-a', metavar='', help='Input Aligned amino acid FASTA file')
-parser.add_argument('-o', metavar='', help='Output Aligned nucleotide FASTA file')
+parser.add_argument('-n', metavar='', required=True, help='Input Nucleotide FASTA file')
+parser.add_argument('-a', metavar='', required=True, help='Input Aligned amino acid FASTA file')
+parser.add_argument('-o', metavar='', required=True, help='Output Aligned nucleotide FASTA file')
 parser.add_argument('-mb', action = 'store_true',
                     help='Use this flag if the nucleotide sequences are composed of only codon middle bases')
 

@@ -5,8 +5,8 @@ import argparse
 parser = argparse.ArgumentParser(description='Converts FASTA to csv and generates a list of FASTA names',
                                  epilog='The program works with single line FASTA files')
 
-parser.add_argument('-f', metavar='', help='Input FASTA file')
-parser.add_argument('-o', metavar='', help='Output csv file')
+parser.add_argument('-f', metavar='', required=True, help='Input FASTA file')
+parser.add_argument('-o', metavar='', required=True, help='Output csv file')
 parser.add_argument('-option', metavar='', default='aa',
                     help='Enter nuc for Nucleotide sequence [default aa for Protein sequence')
 parser.add_argument('-mb', action='store_true',
