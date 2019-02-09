@@ -48,3 +48,5 @@ if __name__ == '__main__':
                 fout_seq.write('%s,' % split_fasta[i][j])
             else:
                 fout_seq.write('%s\n' % split_fasta[i][j])
+
+    fout_seq.close()

@@ -23,3 +23,5 @@ if __name__ == '__main__':
     for _ in range(len(names)):
         fout.write('>%s\n' % names[_])
         fout.write('%s\n' % ("".join(csv[_])))
+
+    fout.close()
