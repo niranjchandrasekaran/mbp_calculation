@@ -7,6 +7,8 @@ parser = argparse.ArgumentParser(description='Maps the nucleotide sequence to al
 parser.add_argument('-n', metavar='', help='Input Nucleotide FASTA file')
 parser.add_argument('-a', metavar='', help='Input Aligned amino acid FASTA file')
 parser.add_argument('-o', metavar='', help='Output Aligned nucleotide FASTA file')
+parser.add_argument('-mb', action = 'store_true',
+                    help='Use this flag if the nucleotide sequences are composed of only codon middle bases')
 
 args = parser.parse_args()
 
@@ -20,7 +22,7 @@ def build_dict(fasta, skip):
             name = fasta[_]
         else:
             for i in range(0, len(fasta[_]), skip):
-                temp.append(fasta[_][i:i+skip])
+                temp.append(fasta[_][i:i + skip])
             fasta_dict[name] = temp
 
     return fasta_dict
@@ -33,7 +35,11 @@ if __name__ == '__main__':
     with open(args.a, 'r') as fopen:
         aa_align_fasta = [line.rstrip() for line in fopen]
 
-    nuc_dict = build_dict(nuc_fasta, 3)
+    if not args.mb:
+        nuc_dict = build_dict(nuc_fasta, 3)
+    else:
+        nuc_dict = build_dict(nuc_fasta, 1)
+
     aa_align_dict = build_dict(aa_align_fasta, 1)
 
     nuc_align_fasta = []
@@ -44,10 +50,13 @@ if __name__ == '__main__':
         temp = []
         for i in range(len(aa_align_dict[seq])):
             if aa_align_dict[seq][i] != '-':
-                temp.append(nuc_dict[seq][i-count_dashes])
+                temp.append(nuc_dict[seq][i - count_dashes])
             else:
                 count_dashes += 1
-                temp.append('---')
+                if not args.mb:
+                    temp.append('---')
+                else:
+                    temp.append('-')
 
         nuc_align_fasta.append("".join(temp))
 
