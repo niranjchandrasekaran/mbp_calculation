@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser(description='Converts csv to single line FASTA'
 
 parser.add_argument('-f', metavar='', required=True, help='Input csv file')
 parser.add_argument('-n', metavar='', required=True, help='Input FASTA names')
-parser.add_argument('-o', metavar='', required=True, help='output FASTA file')
+parser.add_argument('-o', metavar='', required=True, help='output single line FASTA file')
 
 args = parser.parse_args()
 
