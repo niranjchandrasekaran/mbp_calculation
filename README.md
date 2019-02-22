@@ -51,17 +51,16 @@ assigns 'c' or 'g' based on the frequency at which each codon middle base appear
 FASTA files are used for the rest of the steps, care should be taken to include the appropriate flags.
 
 Often, it may be necessary to use a spreadsheet software to edit the aligned FASTA files (for example, only a fragment 
-of the protein is of interest) or simply visualize the alignment. If the alignment files are edited using the 
+of the protein is of interest) or simply to visualize the alignment. If the alignment files are edited using the 
 spreadsheet software, it is necessary to edit both the amino acid aligned FASTA and nucleotide aligned FASTA 
 simultaneously. To help this process, the **fasta_to_csv.py** script converts FASTA files to the CSV format, which can 
 be readily read by any spreadsheet software. This script accepts a FASTA file as input and outputs a CSV file. The 
 '**-option**' flag specifies whether the input FASTA file is a nucleotide FASTA file (**-option nuc**) or 
 an amino acid FASTA file (**-option aa**). The '**-mb**' is included if the nucleotide FASTA file consists of only the 
-codon middle bases. The code also outputs the names of the organisms in a separate file which will be useful to 
-reconstruct a FASTA file fom the CSV format after it has been modified using the spreadsheet software.
+codon middle bases. 
 
-The script **csv_to_fasta.py** converts the CSV file to a FASTA file. It accepts a CSV file along with the names of the 
-organism outputted by the previous script.
+The script **csv_to_fasta.py** converts the CSV file to a FASTA file. It accepts a CSV file as input and outputs a 
+FASTA file.
 
 Finally, the MBP scores are computed using the **mbp.py** script. It takes a text file with a list of FASTA files 
 (aligned nucleotide FASTAs) as input and computes the MBP scores as described in the 
