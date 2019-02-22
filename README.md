@@ -42,6 +42,14 @@ Next, the nucleotide sequence has to be mapped back to the aligned protein seque
 outputs the aligned nucleotide FASTA file. There is a provision to use only the codon middle bases in the nucleotide 
 FASTA file using the '**-mb**' flag. 
 
+Sometimes there are situations when only the amino acid sequence FASTA or the alignment FASTA is available while the 
+DNA coding sequence is not. Since the MBP calculation is done using only the middle bases and since the middle codon 
+bases corresponding to each amino acid is conserved, except in the case of Serine, the amino acid sequence can be 
+mapped back to the codon middle bases using the **aa_to_mb.py** script. This script accepts a single line amino acid 
+sequence FASTA or a aligned amino acid FASTA and converts it into a codon middle base FASTA. For Serine, the script 
+assigns 'c' or 'g' based on the frequency at which each codon middle base appears in nature. If codon middle base 
+FASTA files are used for the rest of the steps, care should be taken to include the appropriate flags.
+
 Often, it may be necessary to use a spreadsheet software to edit the aligned FASTA files (for example, only a fragment 
 of the protein is of interest) or simply visualize the alignment. If the alignment files are edited using the 
 spreadsheet software, it is necessary to edit both the amino acid aligned FASTA and nucleotide aligned FASTA 
