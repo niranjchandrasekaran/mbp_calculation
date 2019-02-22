@@ -57,7 +57,7 @@ simultaneously. To help this process, the **fasta_to_csv.py** script converts FA
 be readily read by any spreadsheet software. This script accepts a FASTA file as input and outputs a CSV file. The 
 '**-option**' flag specifies whether the input FASTA file is a nucleotide FASTA file (**-option nuc**) or 
 an amino acid FASTA file (**-option aa**). The '**-mb**' is included if the nucleotide FASTA file consists of only the 
-codon middle bases. 
+codon middle bases. The FASTA headers are the first columns of the csv file.
 
 The script **csv_to_fasta.py** converts the CSV file to a FASTA file. It accepts a CSV file as input and outputs a 
 FASTA file.

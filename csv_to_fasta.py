@@ -16,7 +16,10 @@ if __name__ == '__main__':
 
     fout = open(args.o, 'w')
 
-    for _ in range(len(csv)):
-        fout.write('%s\n' % ("".join(csv[_])))
+    cleaned_csv = [csv[_] for _ in range(len(csv)) if len(csv[_]) > 1]
+
+    for _ in range(len(cleaned_csv)):
+        fout.write('>%s\n' % cleaned_csv[_][0])
+        fout.write('%s\n' % ("".join(cleaned_csv[_][1:])))
 
     fout.close()

@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
         for line in fopen:
             if line.startswith('>'):
-                name.append(line.rstrip())
+                name.append(line.rstrip()[1:])
             else:
                 if args.option == 'nuc':
                     fasta.append(line.rstrip().lower())
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     fout_seq = open(args.o, 'w')
 
     for i in range(len(split_fasta)):
-        fout_seq.write('%s,\n' % name[i])
+        fout_seq.write('%s,' % name[i])
         for j in range(len(split_fasta[i])):
             if j != len(split_fasta[i]) - 1:
                 fout_seq.write('%s,' % split_fasta[i][j])
