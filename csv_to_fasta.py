@@ -17,6 +17,7 @@ if __name__ == '__main__':
     fout = open(args.o, 'w')
 
     for _ in range(len(csv)):
-        fout.write('%s\n' % ("".join(csv[_])))
+        fout.write('>%s\n' % csv[_][0])
+        fout.write('%s\n' % ("".join(csv[_][1:])))
 
     fout.close()
