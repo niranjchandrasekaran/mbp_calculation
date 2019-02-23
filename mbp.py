@@ -91,7 +91,7 @@ if __name__ == '__main__':
                         fwd.append(mbpf(mb_fasta_i[x], mb_fasta_j[y], base_comp))
                         rev.append(mbpf(mb_fasta_i[x], mb_fasta_j[y][::-1], base_comp))
 
-            if args.verbose:
+            if args.sequence:
                 fout_name = fasta_i_name.split('.')[0] + '-' + fasta_j_name.split('.')[0]
                 fout = open(fout_name, 'w')
 
