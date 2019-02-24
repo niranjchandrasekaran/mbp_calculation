@@ -39,7 +39,7 @@ def mbpf(seq_1, seq_2, comp):
         elif comp[nuc] == seq_2[_]:
             count += 1
 
-    return count / (len(seq_1) - dashes)
+    return float(count) / float(len(seq_1) - dashes)
 
 
 def length_check(fasta, fasta_file_name, fasta_names):
