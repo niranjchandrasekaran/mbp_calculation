@@ -121,7 +121,7 @@ if __name__ == '__main__':
                         rev.append(mbpf(mb_fasta_i[x], mb_fasta_j[y][::-1], base_comp))
 
             if args.sequence:
-                fout_name = fasta_i_name.split('.')[0] + '-' + fasta_j_name.split('.')[0]
+                fout_name = fasta_i_name.split('.')[0] + '-' + fasta_j_name.split('.')[0] + '.csv'
                 fout = open(fout_name, 'w')
 
                 fout.write('Seq 1,Seq 2,MBP fwd-fwd,MBP fwd-rev\n')
