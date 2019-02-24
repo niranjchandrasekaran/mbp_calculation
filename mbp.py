@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
     base_comp = {'a': 't', 't': 'a', 'g': 'c', 'c': 'g'}
 
-    fout_all = open('mbp_out', 'w')
+    fout_all = open('mbp_out.csv', 'w')
     fout_all.write('Fasta 1,Fasta 2,<MBP> fwd-fwd,<MBP> fwd-rev\n')
 
     fasta_checked = [0 for _ in range(len(file_list))]
