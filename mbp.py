@@ -39,7 +39,7 @@ def mbpf(seq_1, seq_2, comp):
         elif comp[nuc] == seq_2[_]:
             count += 1
 
-    return count / (len(seq_1) - dashes)
+    return float(count) / float(len(seq_1) - dashes)
 
 
 def length_check(fasta, fasta_file_name, fasta_names):
@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
     base_comp = {'a': 't', 't': 'a', 'g': 'c', 'c': 'g'}
 
-    fout_all = open('mbp_out', 'w')
+    fout_all = open('mbp_out.csv', 'w')
     fout_all.write('Fasta 1,Fasta 2,<MBP> fwd-fwd,<MBP> fwd-rev\n')
 
     fasta_checked = [0 for _ in range(len(file_list))]

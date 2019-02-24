@@ -67,5 +67,5 @@ Finally, the MBP scores are computed using the **mbp.py** script. It takes a tex
 [publication](https://academic.oup.com/mbe/article/30/7/1588/973415). All the FASTA files must have the extension 
 '.fasta'. The '**-mb**' flag is included if the nucleotide FASTA file consists of only the codon middle bases. The 
 script outputs the all vs. all <MBP> score both in the forward direction and in the reverse direction to the file 
-**mbp_out**.  The **-sequence** flag output individual sequence level MBP score. Each pair of FASTA file generates a 
-separate output file whose name is derived from the names of the pair of FASTA files.
+**mbp_out.csv**.  The **-sequence** flag output individual sequence level MBP score. Each pair of FASTA file generates 
+a separate output file whose name is derived from the names of the pair of FASTA files.
