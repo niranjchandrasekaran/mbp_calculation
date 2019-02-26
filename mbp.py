@@ -64,7 +64,7 @@ if __name__ == '__main__':
     base_comp = {'a': 't', 't': 'a', 'g': 'c', 'c': 'g'}
 
     fout_all = open('mbp_out.csv', 'w')
-    fout_all.write('Fasta 1,Fasta 2,<MBP> fwd-fwd,<MBP> fwd-rev\n')
+    fout_all.write('Fasta 1,Fasta 2,<MBP> fwd-fwd,SD fwd-fwd,<MBP> fwd-rev,SD fwd-rev\n')
 
     fasta_checked = [0 for _ in range(len(file_list))]
     median_array = [0 for _ in range(len(file_list))]
@@ -78,7 +78,8 @@ if __name__ == '__main__':
         else:
             mb_fasta_i = fasta_i
 
-        fasta_checked[i], median_array[i] = length_check(mb_fasta_i, fasta_i_name, fasta_org_name_i)
+        if fasta_checked[i] == 0:
+            fasta_checked[i], median_array[i] = length_check(mb_fasta_i, fasta_i_name, fasta_org_name_i)
 
         for j in range(i, len(file_list)):
             same_fasta = False
@@ -97,7 +98,8 @@ if __name__ == '__main__':
                 else:
                     mb_fasta_j = fasta_j
 
-                fasta_checked[j], median_array[j] = length_check(mb_fasta_j, fasta_j_name, fasta_org_name_j)
+                if fasta_checked[j] == 0:
+                    fasta_checked[j], median_array[j] = length_check(mb_fasta_j, fasta_j_name, fasta_org_name_j)
 
                 if median_array[i] != median_array[j]:
                     sys.stdout.write(
@@ -130,10 +132,13 @@ if __name__ == '__main__':
 
                 fout.close()
 
-            mean_fwd = sum(fwd) / len(fwd)
-            mean_rev = sum(rev) / len(rev)
+            mean_fwd = np.mean(fwd)
+            std_fwd = np.std(fwd)
+            mean_rev = np.mean(rev)
+            std_rev = np.std(rev)
 
             fout_all.write(
-                '%s,%s,%f,%f\n' % (fasta_i_name.split('.')[0], fasta_j_name.split('.')[0], mean_fwd, mean_rev))
+                '%s,%s,%f,%f,%f,%f\n' % (
+                fasta_i_name.split('.')[0], fasta_j_name.split('.')[0], mean_fwd, std_fwd, mean_rev, std_rev))
 
     fout_all.close()
